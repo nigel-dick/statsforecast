@@ -1654,6 +1654,12 @@ class ParallelBackend:
             time_col=time_col,
             target_col=target_col,
         )
+    
+   
+class DummyObject():
+    def __init__(self, *args, **kwargs):
+        pass
+    
 
 
 @conditional_dispatcher
@@ -1779,15 +1785,6 @@ class StatsForecast(_StatsForecast):
             df is None or isinstance(df, pd.DataFrame) or isinstance(df, pl_DataFrame)
         )
 
-    def fit(
-        self,
-        df: Optional[DataFrame] = None,
-        sort_df: bool = True,
-        prediction_intervals: Optional[ConformalIntervals] = None,
-        id_col: str = "unique_id",
-        time_col: str = "ds",
-        target_col: str = "y",
-    ):
 
         if self._is_native(df=df):
             return super().fit(
