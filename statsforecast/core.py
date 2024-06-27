@@ -708,6 +708,8 @@ class _StatsForecast:
         self : StatsForecast
             Returns with stored `StatsForecast` fitted `models`.
         """
+        
+        print('fit_prepare_fit')
         self._prepare_fit(
             df=df,
             sort_df=sort_df,
@@ -715,6 +717,8 @@ class _StatsForecast:
             time_col=time_col,
             target_col=target_col,
         )
+        print('fit_prepare_fit')
+
         self._validate_sizes_for_prediction_intervals(prediction_intervals)
         self._set_prediction_intervals(prediction_intervals=prediction_intervals)
         if self.n_jobs == 1:
@@ -922,6 +926,8 @@ class _StatsForecast:
             predictions for all fitted `models`.
         """
         self.__dict__.pop("fcst_fitted_values_", None)
+
+        print('forecast_prepare_fit')
         self._prepare_fit(
             df=df,
             sort_df=sort_df,
@@ -929,6 +935,8 @@ class _StatsForecast:
             time_col=time_col,
             target_col=target_col,
         )
+        print('forecast_prepare_fit')
+
         self._validate_exog(X_df)
         self._validate_sizes_for_prediction_intervals(prediction_intervals)
         self._set_prediction_intervals(prediction_intervals=prediction_intervals)
@@ -1822,6 +1830,7 @@ class StatsForecast(_StatsForecast):
                 time_col=time_col,
                 target_col=target_col,
             )
+        print('NOT NATIVE')
         assert df is not None
         engine = make_execution_engine(infer_by=[df])
         self._backend = make_backend(engine)
