@@ -1605,6 +1605,9 @@ class ParallelBackend:
         time_col,
         target_col,
     ) -> Any:
+        
+        
+        print('PB forecast')
         model = _StatsForecast(
             models=models,
             freq=freq,
@@ -1675,6 +1678,8 @@ class ParallelBackend:
         time_col,
         target_col,
     ) -> Any:
+        
+        print('PB fit')
         model = _StatsForecast(
             models=models,
             freq=freq,
@@ -1730,6 +1735,7 @@ class StatsForecast(_StatsForecast):
                 time_col=time_col,
                 target_col=target_col,
             )
+        print('NOT NATIVE')
         assert df is not None
         engine = make_execution_engine(infer_by=[df])
         self._backend = make_backend(engine)
