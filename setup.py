@@ -51,7 +51,7 @@ dev_requirements.extend(polars_requirements)
 dev_requirements = list(set(dev_requirements))
 
 setuptools.setup(
-    name = 'statsforecast',
+    name = 'statsforecast_dev',
     license = lic[0],
     classifiers = [
         'Development Status :: ' + statuses[int(cfg['status'])],
