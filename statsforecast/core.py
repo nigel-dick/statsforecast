@@ -1778,3 +1778,40 @@ class StatsForecast(_StatsForecast):
         return engine is None and (
             df is None or isinstance(df, pd.DataFrame) or isinstance(df, pl_DataFrame)
         )
+
+    def fit(
+        self,
+        df: Optional[DataFrame] = None,
+        sort_df: bool = True,
+        prediction_intervals: Optional[ConformalIntervals] = None,
+        id_col: str = "unique_id",
+        time_col: str = "ds",
+        target_col: str = "y",
+    ):
+
+        if self._is_native(df=df):
+            return super().forecast(
+                df=df,
+                h=h,
+                X_df=X_df,
+                level=level,
+                fitted=fitted,
+                sort_df=sort_df,
+                prediction_intervals=prediction_intervals,
+                id_col=id_col,
+                time_col=time_col,
+                target_col=target_col,
+            )
+        assert df is not None
+        engine = make_execution_engine(infer_by=[df])
+        self._backend = make_backend(engine)
+        return self._backend.fit(
+            models=self.models,
+            fallback_model=self.fallback_model,
+            freq=self.freq,
+            df=df,
+            prediction_intervals=prediction_intervals,
+            id_col=id_col,
+            time_col=time_col,
+            target_col=target_col,
+        )
