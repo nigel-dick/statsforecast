@@ -1739,6 +1739,9 @@ class StatsForecast(_StatsForecast):
         assert df is not None
         engine = make_execution_engine(infer_by=[df])
         self._backend = make_backend(engine)
+
+        print(engine)
+        print(self._backend)
         return self._backend.forecast(
             models=self.models,
             fallback_model=self.fallback_model,
@@ -1840,6 +1843,8 @@ class StatsForecast(_StatsForecast):
         assert df is not None
         engine = make_execution_engine(infer_by=[df])
         self._backend = make_backend(engine)
+        print(engine)
+        print(self._backend)
         return self._backend.fit(
             models=self.models,
             fallback_model=self.fallback_model,
