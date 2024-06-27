@@ -1804,6 +1804,7 @@ class StatsForecast(_StatsForecast):
         )
 
     def fit(
+        self,
         df: Optional[DataFrame] = None,
         sort_df: bool = True,
         prediction_intervals: Optional[ConformalIntervals] = None,
