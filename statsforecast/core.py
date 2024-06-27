@@ -549,7 +549,7 @@ _param_descriptions = {
 
 # %% ../nbs/src/core/core.ipynb 29
 class _StatsForecast:
-    """The `StatsForecast` class allows you to efficiently fit multiple `StatsForecast` models
+    """ABSFJKAB FVHJDBS VHJ JSDV The `StatsForecast` class allows you to efficiently fit multiple `StatsForecast` models
     for large sets of time series. It operates on a DataFrame `df` with at least three columns
     ids, times and targets.
 
@@ -1790,13 +1790,11 @@ class StatsForecast(_StatsForecast):
     ):
 
         if self._is_native(df=df):
-            return super().forecast(
+            return super().fit(
+                models=self.models,
+                fallback_model=self.fallback_model,
+                freq=self.freq,
                 df=df,
-                h=h,
-                X_df=X_df,
-                level=level,
-                fitted=fitted,
-                sort_df=sort_df,
                 prediction_intervals=prediction_intervals,
                 id_col=id_col,
                 time_col=time_col,
