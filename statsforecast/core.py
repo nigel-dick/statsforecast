@@ -1613,17 +1613,18 @@ class ParallelBackend:
             freq=freq,
             fallback_model=fallback_model,
         )
-        return model.forecast(
-            df=df,
-            h=h,
-            X_df=X_df,
-            level=level,
-            fitted=fitted,
-            prediction_intervals=prediction_intervals,
-            id_col=id_col,
-            time_col=time_col,
-            target_col=target_col,
-        )
+        return 1
+        # return model.forecast(
+        #     df=df,
+        #     h=h,
+        #     X_df=X_df,
+        #     level=level,
+        #     fitted=fitted,
+        #     prediction_intervals=prediction_intervals,
+        #     id_col=id_col,
+        #     time_col=time_col,
+        #     target_col=target_col,
+        # )
 
     def cross_validation(
         self,
